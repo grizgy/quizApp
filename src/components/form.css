@@ -1,0 +1,51 @@
+.form {
+    height: 100%;
+    grid-column: 1/7; 
+    grid-row: 2/5;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    background-color: #466c89;
+    border: 2px solid grey;
+    border-radius: 10px;
+    text-align: center;
+    gap: 15px;
+    justify-content: center;
+    justify-items: center;
+    font-family: Comic Sans MS, Comic Sans, cursive;
+}
+
+h2{
+    margin:20px;
+}
+
+div {
+    color:wheat;
+}
+
+.answer{
+    display: grid;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn, .btn-secondary, .btn-sm {
+    height: 100%;
+    display: grid;
+    margin: 20px;
+    align-content: center;
+    width: 280px;
+}
+button{
+    width: 180px;
+    text-align: left;
+    border-radius: 10px;
+    color:wheat;
+    background-color: #035798;
+    border-color: #49657A;
+}
+
+button:hover{
+    background-color: #7791A5;
+}
+
+

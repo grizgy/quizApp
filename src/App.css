@@ -1,0 +1,38 @@
+html, body {
+  height: 100%;
+  background-color: #EFF2F5;
+  text-decoration-color: #EFF2F5 ;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  margin: 0cm;
+  padding: 0cm;
+}
+
+#root {
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  align-items: center;
+  justify-content: center;
+}
+
+.App {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  height: 100%;
+  grid-column: 2/7; 
+  grid-row: 1/5; 
+  border: 0cm;
+  padding: none;
+}
+
+.cd {
+  display: grid;
+  grid-column: 6; 
+  grid-row: 1; 
+}
+
+
