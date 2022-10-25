@@ -16,13 +16,15 @@ function App() {
 
     const [quizQuestion, setQuizQuestion] = useState([]);
   
+    var allQuizData;
+
     const fetchData = () => {
       const quizApi = 'https://the-trivia-api.com/api/questions?limit=5';
       const getQuizApi = axios.get(quizApi)
   
       axios.all([getQuizApi]).then(
         axios.spread((...allData) => {
-          const allQuizData = allData[0].data[0]
+          allQuizData = allData[0].data
           
           setQuizQuestion(allQuizData)
 
@@ -41,16 +43,17 @@ function App() {
     fetchData()
   }, [])
 
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const incrementOnClick = () => {
+    const nextQuestion = currentQuestion + 1 ;
+    setCurrentQuestion(nextQuestion);
+  }
+
   return (
     <div className="App">
-      {/* <div  className='cd'><CountDown></CountDown></div> */}
-      {!showComponent && <Timer/>}
-      {showComponent && <CountDown/>}
-      {showComponent && <Form question={quizQuestion.question} answer1={quizQuestion.correctAnswer} 
-      answer2={quizQuestion.incorrectAnswers[0]} 
-      answer3={quizQuestion.incorrectAnswers[1]} 
-      answer4={quizQuestion.incorrectAnswers[2]} ></Form>
-      } 
+
+      {!showComponent? <Timer/> : <CountDown/> && <Form value={quizQuestion} index={currentQuestion + 1}/>}
+
     </div>
   );
 }
