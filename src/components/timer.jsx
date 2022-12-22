@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './timer.css';
 
-class Timer extends Component {
-    state = {  } 
-    render() { 
+function Timer () {
         return (
 
             <div class="demo">
@@ -29,7 +27,6 @@ class Timer extends Component {
 </div>
 
         );
-    }
 }
  
 export default Timer;

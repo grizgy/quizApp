@@ -7,14 +7,7 @@ import CountDown from './components/countDown'
 
 function App() {
   let [showComponent, setShowComponent] = useState(false);
-
-  useEffect(() => {
-    setInterval(() => {
-      setShowComponent(!showComponent);
-    }, 4500);
-  }, [])
-
-    const [quizQuestion, setQuizQuestion] = useState([]);
+  const [quizQuestion, setQuizQuestion] = useState([]);
   
     var allQuizData;
 
@@ -29,30 +22,24 @@ function App() {
           setQuizQuestion(allQuizData)
 
           console.log(allQuizData)
-          // console.log(getQuizApi)
-          // console.log(quizQuestion.data.question)
 
         })
       )
       
     }
   
-  
-
-  useEffect(() => {
-    fetchData()
-  }, [])
-
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const incrementOnClick = () => {
-    const nextQuestion = currentQuestion + 1 ;
-    setCurrentQuestion(nextQuestion);
-  }
+    useEffect(() => {
+      setInterval(() => {
+        setShowComponent(!showComponent);
+      }, 4500);
+      fetchData()
+    }, [])
 
   return (
     <div className="App">
 
-      {!showComponent? <Timer/> : <CountDown/> && <Form value={quizQuestion} index={currentQuestion + 1}/>}
+      {!showComponent? <Timer/> : <CountDown/>}
+      {!showComponent? <Timer/> : <Form value={quizQuestion} index={1}/>}
 
     </div>
   );

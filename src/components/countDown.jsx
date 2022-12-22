@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './countDown.css';
 
-class countDown extends Component {
-    state = {  } 
-    render() { 
+function countDown () {
         return (
 
     <div class="countdown">
@@ -13,9 +11,7 @@ class countDown extends Component {
             <circle r="20" stroke-dasharray="125" stroke-dashoffset="125px"></circle>
         </svg>
     </div>
-
         );
-    }
 }
- 
+
 export default countDown;

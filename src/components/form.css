@@ -31,12 +31,14 @@ div {
 .btn, .btn-secondary, .btn-sm {
     height: 100%;
     display: grid;
+    max-height: 1fr;
     margin: 20px;
     align-content: center;
     width: 280px;
+    word-wrap: break-word;
 }
 button{
-    width: 180px;
+    width: 180px; 
     text-align: left;
     border-radius: 10px;
     color:wheat;

@@ -1,37 +1,46 @@
-import React, { Component} from 'react';
+import React, {useState,useEffect} from 'react';
 import './form.css';
 
-class Form extends Component {
-    state = { 
-        counter : 0,
-        // correct: 0,
-        // wrong : 0,
+function Form (props) {
+    
+        const [counter, setCounter] = useState(0);
+        let quizQuestion = props.value;
 
-     }; 
-    render() { 
+        const correct = quizQuestion[counter].correctAnswer;
+        const wrong = quizQuestion[counter].incorrectAnswers;
+        wrong.splice(Math.floor(Math.random() * (wrong.length + 1)), 0, correct);
+
+
+         useEffect ( () => {
+            console.log(wrong);
+            console.log(correct);
+         } , [counter]
+         )
+
+        const incrementOnClick = (data) => {
+            setCounter(counter+1);  
+             if(correct===data) {
+                console.log("Correct answer");
+             }          
+        }; 
 
         return (
 
             <div className='form'>
             <div>
-            <h2>Question {this.props.index}/5</h2>
-            <span>{this.props.value[0].question}</span>
+            <h2>Question {counter + 1}/5</h2>
+            <span>{quizQuestion[counter].question}</span>
             </div>
            
             <div className='answer'>
 
-                {/* <button className='btn btn-secondary btn-sm'>{this.props.answer1}</button>
-                <button className='btn btn-secondary btn-sm'>{this.props.answer2}</button>
-                <button className='btn btn-secondary btn-sm'>{this.props.answer3}</button>
-                <button className='btn btn-secondary btn-sm'>{this.props.answer4}</button> */}
-
-                {this.props.value[0].incorrectAnswers.map(data => <button className='btn btn-secondary btn-sm'>{data}</button>)}
+                {/* <button className='btn btn-secondary btn-sm' onClick={incrementOnClick} >{correct}</button> */}
+                {wrong.map(data => <button className='btn btn-secondary btn-sm' onClick={()=>incrementOnClick(data)}>{data}</button>)}
                 
             </div>
 
             </div>
         );
-    }
 }
 
 
