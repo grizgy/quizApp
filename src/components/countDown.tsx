@@ -4,7 +4,7 @@ import './countDown.css';
 function countDown () {
         return (
 
-    <div class="countdown">
+    <div className="countdown">
         <svg viewBox="-50 -50 100 100" stroke-width="5">
             <circle r="20"></circle>
             {/* <circle r="15" stroke-dasharray="282.7433388230814" stroke-dashoffset="282.7433388230814px"></circle> */}

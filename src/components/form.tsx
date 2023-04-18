@@ -1,7 +1,7 @@
 import React, {useState,useEffect} from 'react';
 import './form.css';
 
-function Form (props) {
+function Form (props : any) {
     
         const [counter, setCounter] = useState(0);
         let quizQuestion = props.value;
@@ -17,7 +17,7 @@ function Form (props) {
          } , [counter]
          )
 
-        const incrementOnClick = (data) => {
+        const incrementOnClick = (data : any) => {
             setCounter(counter+1);  
              if(correct===data) {
                 console.log("Correct answer");
@@ -35,7 +35,7 @@ function Form (props) {
             <div className='answer'>
 
                 {/* <button className='btn btn-secondary btn-sm' onClick={incrementOnClick} >{correct}</button> */}
-                {wrong.map(data => <button className='btn btn-secondary btn-sm' onClick={()=>incrementOnClick(data)}>{data}</button>)}
+                {wrong.map( (data : any ) => <button className='btn btn-secondary btn-sm' onClick={()=>incrementOnClick(data)}>{data}</button>)}
                 
             </div>
 
