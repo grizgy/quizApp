@@ -11,20 +11,20 @@ html, body {
 
 #root {
   height: 100%;
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(5, 1fr); */
   align-items: center;
   justify-content: center;
 }
 
 .App {
-  display: grid;
+  /* display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(4, 1fr);
   height: 100%;
   grid-column: 2/7; 
-  grid-row: 1/5; 
+  grid-row: 1/5;  */
   border: 0cm;
   padding: none;
 }
