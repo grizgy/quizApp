@@ -1,10 +1,11 @@
 import axios from 'axios';
 import './App.css';
 import { useState, useEffect } from 'react';
-import Form from './components/form'
-import Timer from './components/timer'
-import CountDown from './components/countDown'
-import Categories from './setCategories';
+import Form from './Quiz/components/form';
+import Timer from './Quiz/components/timer';
+import CountDown from './Quiz/components/countDown';
+import Categories from './Quiz/components/setCategories';
+import PlayGround from './Tic Tac Toe/Components/playGround';
 
 function App() {
   let [showComponent, setShowComponent] = useState(false);
@@ -43,7 +44,8 @@ function App() {
       {/* {!showComponent? <Timer/> : <CountDown/>}
       {!showComponent? <Timer/> : <Form value={quizQuestion} index={1}/>} */}
 
-      <Categories></Categories>
+      {/* <Categories></Categories> */}
+      <PlayGround></PlayGround>
 
     </div>
   );
