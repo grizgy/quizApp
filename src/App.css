@@ -35,4 +35,18 @@ html, body {
   grid-row: 1; 
 }
 
+.logo{
+  height: 200px;
+  width: 200px;
+  border-radius: 100px;
+}
+
+.logo:hover{
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+button{
+  border: none;
+}
 
