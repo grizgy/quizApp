@@ -1,0 +1,13 @@
+.square {
+    border: 1px solid black;
+    padding: 0%;
+}
+
+.square:hover{
+    background-color: #707994;
+}
+
+.css-u4bs8o-MuiSvgIcon-root{
+    width: 5em;
+    height: 5em;
+}

@@ -1,0 +1,16 @@
+.container {
+   /* width: 70vw;
+   height: 70vh; */
+   /* background-color: aquamarine; */
+   border: 1px solid black;
+   border: none;
+   flex-direction: column;
+   display: grid;
+   grid-template-rows: auto auto auto;
+}
+
+.board-row {
+    display: grid;
+   grid-template-columns: auto auto auto;
+   /* border: 1px solid black; */
+}

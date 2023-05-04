@@ -7,7 +7,7 @@ import countDown from './quiz/components/countDown';
 import Categories from './quiz/components/setCategories';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import QuizMain from './quiz/quizMain';
-
+import PlayGround from './Tic Tac Toe/Components/playGround';
 
 
 function App() {
@@ -49,24 +49,28 @@ function App() {
 
       {/* <Categories></Categories> */}
 
-      <Router>
+
+      {/* <Router> */}
 
         {/* <Categories></Categories> */}
-        <Routes>
+        {/* <Routes> */}
 
-        <Route path='TicTacToe' element={<QuizMain/>}></Route>
+        {/* <Route path='TicTacToe' element={<QuizMain/>}></Route> */}
         {/* <Route path='TicTacToe' element={<Categories/>}><button><img className='logo' src={require("./TicTacToePic.png")}  alt="logo" /></button></Route> */}
 
 
         {/* <Route path='TicTacToe' element={<button><img className='logo' src={require("./QuizApp.jpg")} alt="logo" /></button>}></Route> */}
        
 
-        </Routes>
+        {/* </Routes> */}
 
-        <button><img className='logo' src={require("./QuizApp.jpg")} alt="logo" /></button>
+        {/* <button><img className='logo' src={require("./QuizApp.jpg")} alt="logo" /></button> */}
         
-      </Router>
+      {/* </Router> */}
       
+
+      <PlayGround></PlayGround>
+
 
     </div>
   );
