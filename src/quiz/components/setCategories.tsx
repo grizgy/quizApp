@@ -1,4 +1,5 @@
-import { useState } from "react";
+import axios from 'axios';
+import { useState, useEffect } from "react";
 import {Box, Card, Typography, FormControl, CardActions, Button, Select, InputLabel, MenuItem, SelectChangeEvent, FormLabel, TextField, CardContent, Stack} from "@mui/material" 
 import Slider from '@mui/material/Slider';
 import Switch from '@mui/joy/Switch';
@@ -16,6 +17,38 @@ function Categories () {
         setDifficulty(event.target.value);
     };
     
+
+    let [showComponent, setShowComponent] = useState(false);
+    const [quizQuestion, setQuizQuestion] = useState([]);
+
+
+    var allQuizData;
+    var number = 5;
+
+    const fetchData = () => {
+      const quizApi = `https://the-trivia-api.com/api/questions?limit=${number}`;
+      const getQuizApi = axios.get(quizApi)
+  
+      axios.all([getQuizApi]).then(
+        axios.spread((...allData) => {
+          allQuizData = allData[0].data
+          
+          setQuizQuestion(allQuizData)
+
+          console.log(allQuizData)
+
+        })
+      )
+      
+    }
+
+
+    useEffect(() => {
+      setInterval(() => {
+        setShowComponent(!showComponent);
+      }, 4500);
+      fetchData()
+    }, [])
 
     return (
         <div>

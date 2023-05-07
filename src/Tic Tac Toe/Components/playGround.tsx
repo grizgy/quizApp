@@ -1,6 +1,6 @@
 import './playGround.css';
 import Square from './square';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function PlayGround () {
 
@@ -31,11 +31,17 @@ function PlayGround () {
       const winner = calculateWinner(squares)
 
       let gameStatus;
-        if (winner) {
-            gameStatus = "Winner: " + winner;
-        } else {
+        if (!winner) {
             gameStatus = "Next player: " + (xIsNext ? "X" : "O");
+        } else {
+          gameStatus = "";
         }
+
+        // useEffect ( () => {
+         
+        // } , [winner]
+
+        // )
 
 
 
@@ -58,6 +64,11 @@ function PlayGround () {
 
 
 
+      }
+
+      function startNewGame() {
+        setSquares(Array(9).fill(null));
+        setXIsNext(true);
       }
 
     return (
@@ -84,6 +95,12 @@ function PlayGround () {
             <Square value={squares[8]} onSquareClick={() => handleClick(8)}/>
         </div>
 
+        <div >{winner? <div className='showWinner'>
+        <div>The winner is: {winner}</div>
+        <button onClick={startNewGame}>New game</button>
+        </div> : <div></div>}</div>
+        
+        
 
         </div>
     );
