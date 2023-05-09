@@ -6,6 +6,9 @@ function PlayGround () {
 
     const [squares, setSquares] = useState(Array(9).fill(null));
     const [xIsNext, setXIsNext] = useState(true);
+    const [xWin, setXWinner] = useState(0)
+    const [oWin, setOWinner] = useState(0)
+    
 
     function calculateWinner(squares : any) {
 
@@ -35,13 +38,21 @@ function PlayGround () {
             gameStatus = "Next player: " + (xIsNext ? "X" : "O");
         } else {
           gameStatus = "";
+
+
         }
 
-        // useEffect ( () => {
-         
-        // } , [winner]
+        useEffect (() => {
+          if (winner) {
+            if(winner==="X") {
+              setXWinner(xWin+1)
+            } else {
+              setOWinner(oWin+1)
+            }
+          }
+        } , [winner]
 
-        // )
+        )
 
 
 
@@ -62,8 +73,10 @@ function PlayGround () {
         setXIsNext(!xIsNext)
         setSquares(nextSquares);
 
+      }
 
-
+      const themeStyles = {
+        backgroundColor : xIsNext ? "black" : "white"
       }
 
       function startNewGame() {
@@ -71,14 +84,19 @@ function PlayGround () {
         setXIsNext(true);
       }
 
-    return (
+    return (      
 
         <div className="container">
 
+      <header>
+      <div>X: {xWin}</div>
+      <div>0: {oWin}</div>
+      </header>
+
         <div className="status">{gameStatus}</div>
 
-        <div className="board-row">
-            <Square value={squares[0]} onSquareClick={() => handleClick(0)}/>
+        <div style={themeStyles} className="board-row">
+            <Square  value={squares[0]} onSquareClick={() => handleClick(0)}/>
             <Square value={squares[1]} onSquareClick={() => handleClick(1)}/>
             <Square value={squares[2]} onSquareClick={() => handleClick(2)}/>
         </div>
@@ -97,7 +115,11 @@ function PlayGround () {
 
         <div >{winner? <div className='showWinner'>
         <div>The winner is: {winner}</div>
+        <div className='buttons'>
         <button onClick={startNewGame}>New game</button>
+        <button>Main menu</button>
+        </div>
+       
         </div> : <div></div>}</div>
         
         
