@@ -10,7 +10,7 @@ function PlayGround () {
     const [oWin, setOWinner] = useState(0)
     
 
-    function calculateWinner(squares : any) {
+    function calculateWinner(squares : string[]) {
 
         const lines = [
           [0, 1, 2],
@@ -25,13 +25,39 @@ function PlayGround () {
         for (let i = 0; i < lines.length; i++) {
           const [a, b, c] = lines[i];
           if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-            return squares[a];
+            return "The winner is: " + squares[a];
           }
         }
+
+        if(tied) {
+          return "Game is tied";
+        }
+
         return null;
       }
 
-      const winner = calculateWinner(squares)
+      
+
+      const ifTied = () => {
+
+        let isFilled : boolean = true;
+        
+        squares.forEach(square => {
+          if(square === null)
+          isFilled = false;
+        }
+        )
+
+        if(isFilled) {
+
+        }
+
+        return isFilled;
+
+      }
+        
+      const tied = ifTied();
+      let winner = calculateWinner(squares)
 
       let gameStatus;
         if (!winner) {
@@ -43,13 +69,19 @@ function PlayGround () {
         }
 
         useEffect (() => {
-          if (winner) {
-            if(winner==="X") {
-              setXWinner(xWin+1)
-            } else {
-              setOWinner(oWin+1)
+
+          if(!tied) {
+            if (winner) {
+              if(winner==="The winner is: X") {
+                setXWinner(xWin+1)
+              } else {
+                setOWinner(oWin+1)
+              }
             }
           }
+    
+       
+          
         } , [winner]
 
         )
@@ -76,6 +108,7 @@ function PlayGround () {
       }
 
       const themeStyles = {
+        color : xIsNext ? "black" : "white",
         backgroundColor : xIsNext ? "black" : "white"
       }
 
@@ -113,8 +146,8 @@ function PlayGround () {
             <Square value={squares[8]} onSquareClick={() => handleClick(8)}/>
         </div>
 
-        <div >{winner? <div className='showWinner'>
-        <div>The winner is: {winner}</div>
+        <div >{(winner || tied)? <div className='showWinner'>
+        <div>{winner}</div>
         <div className='buttons'>
         <button onClick={startNewGame}>New game</button>
         <button>Main menu</button>
