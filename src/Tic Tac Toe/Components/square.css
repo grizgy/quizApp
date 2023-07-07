@@ -6,9 +6,21 @@
 
 .square:hover{
     background-color: #707994;
+    color: blue;
 }
 
 /* .css-159oubt-MuiSvgIcon-root{
     width: 15em;
     height: 5em;
 } */
+
+
+.X-cell{
+    background-color: green;
+    color: azure;
+ }
+ 
+ .O-cell {
+    background-color: red;
+    color: rebeccapurple;
+ }
