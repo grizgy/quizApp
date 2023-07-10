@@ -107,11 +107,6 @@ function PlayGround () {
 
       }
 
-      const themeStyles = {
-        color : xIsNext ? "black" : "white",
-        backgroundColor : xIsNext ? "black" : "white"
-      }
-
       function startNewGame() {
         setSquares(Array(9).fill(null));
         setXIsNext(true);
@@ -146,29 +141,10 @@ function PlayGround () {
 
         <div className="status">{gameStatus}</div>
 
-        {/* <div style={themeStyles} className="board-row">
-            <Square  value={squares[0]} onSquareClick={() => handleClick(0)}/>
-            <Square value={squares[1]} onSquareClick={() => handleClick(1)}/>
-            <Square value={squares[2]} onSquareClick={() => handleClick(2)}/>
-        </div>
-
-        <div className="board-row">
-            <Square value={squares[3]} onSquareClick={() => handleClick(3)}/>
-            <Square value={squares[4]} onSquareClick={() => handleClick(4)}/>
-            <Square value={squares[5]} onSquareClick={() => handleClick(5)}/>
-        </div>
-
-        <div className="board-row">
-            <Square value={squares[6]} onSquareClick={() => handleClick(6)}/>
-            <Square value={squares[7]} onSquareClick={() => handleClick(7)}/>
-            <Square value={squares[8]} onSquareClick={() => handleClick(8)}/>
-        </div> */}
-
-
             {board.map((row, rowIDx) => (
-                <div key={rowIDx} className={`board-row ${true ? 'X-cell' : ''} ${true ? 'O-cell' : ''}`}> {
+                <div key={rowIDx} className={`board-row`}> {
                     row.map((cell, cellIDx) =>  (
-                        <Square status={false} key={cellIDx}  value={squares[cell-1]} onSquareClick={() => handleClick(cell-1)}/>
+                        <Square key={cellIDx}  value={squares[cell-1]} onSquareClick={() => handleClick(cell-1)}/>
                     ))
                 }</div>
             ))}

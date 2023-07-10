@@ -3,59 +3,36 @@ import './playGround.css';
 
 function PlayGroundDAB () {
 
-    const [width, setWidth] = useState(0);
-    const [height, setHeight] = useState(5);
-    // const [array, setArray] = useState([[1,2,3,3], [1,2,3,3], [1,2,3,3], [1,2,3,3]] )
-    // const array : number[] [] = [[1,2,3,3], [1,2,3,3], [1,2,3,3], [1,2,3,3]] 
+    const createBoard = (width : number, height : number) => {
 
-
-    function createField (width : number, height : number) {
-
-        for (let i = 0; i < width; i++) {
-            for (let j = 0; j < height; j++) {
-                // setArray(array[i-1,j-1] = 0);
-
-                console.log( width +  ", " + height )
-
+        let counter = 1;
+        const board = [];
+        for (let row = 0; row < height; row++) {
+            const currentRow = [];
+            for (let col = 0; col < width; col++) {
+            currentRow.push(counter++);
             }
-
+            board.push(currentRow);
         }
-        
+
+        return board;
+
     }
 
-    function minimum() {
-        setWidth(width-1);
-        setHeight(height-1)
-        console.log(height)
-        createField(width,height)
-    }
-
-    function maximum() {
-        setWidth(width+1);
-        setHeight(height+1)
-        console.log(height)
-    }
-
-    
+    const [board, setBoard] = useState(createBoard(4, 4));
 
 
     return (
         <div className='container'>
 
-            <div className='playGround'>
-
-                {width}
-                {height}
-            
-            <button onClick={minimum}>
-                Minimum
-            </button>
-
-            <button onClick={maximum}>
-                Maximum
-            </button>
-
-            </div>
+                {board.map((row, rowIDx) => (
+                <div key={rowIDx} className={`row`}> {
+                    row.map((cell, cellIDx) =>  (
+                        <div key={cellIDx} 
+                        className={`cell`}></div>
+                    ))
+                }</div>
+            ))}
            
             </div>
     )

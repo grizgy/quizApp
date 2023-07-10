@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 function PlayGroundS () {
 
     class LinkedListNode {
-        value : number;
+        value : any;
         next : any;
         constructor(value : number) {
           this.value = value;
@@ -78,8 +78,6 @@ function PlayGroundS () {
     const [snakeCells, setSnakeCells] = useState(new Set([positionInTheMiddle(width, height)]))
     const [snake, setSnake] = useState(new LinkedList(positionInTheMiddle(width, height)))
     const [foodCell, setFoodCell] = useState(new Set([randomCell(width * height)]))
-
-
     const [board, setBoard] = useState(createBoard(width, height));
 
     useEffect(() => {
@@ -104,33 +102,60 @@ function PlayGroundS () {
     useEffect( () => {
         setInterval(() => {
 
-            // setSnake(new LinkedList(snake.head.value + 1));
+            setSnake(new LinkedList(snake.head.value + 1));
 
-            // function moveSnake () {
-            //     const currentHeadCoords = {
-            //         row : snake.head.value.row,
-            //         col : snake.head.value.col,
-            //     };
-
-
-            //     const nextHeadCoords = getNextHeadCoords(currentHeadCoords,direction);
-            //     const nextHeadValue = board[nextHeadCoords.row][nextHeadCoords.col];
-            //     const newHead = new LinkedListNode(
-            //         new Cell(nextHeadCoords.row, nextHeadCoords.col, nextHeadValue),
-            //     );
+            function moveSnake () {
+                const currentHeadCoords = {
+                    row : snake.head.value.row,
+                    col : snake.head.value.col,
+                };
 
 
+                const nextHeadCoords : any = getNextHeadCoords(currentHeadCoords,direction);
+                const nextHeadValue = board[nextHeadCoords.row][nextHeadCoords.col];
+                // const newHead = new LinkedListNode(
+                //     new Cell(nextHeadCoords.row, nextHeadCoords.col, nextHeadValue),
+                // );
 
-            // }
-
-
+                // function Cell (row, col) {
+                //     return null;
+                // }
 
 
 
 
+                function getNextHeadCoords(currentHeadCoords : any,direction : any) {
+
+                    if(direction === Direction.UP) {
+                        return {
+                            row : snake.head.value.row-1,
+                            col : snake.head.value.col,
+                        }
+                    } if (direction === Direction.DOWN) {
+                        return {
+                            row : snake.head.value.row+1,
+                            col : snake.head.value.col,
+                        }
+                    } if (direction === Direction.LEFT) {
+                        return {
+                            row : snake.head.value.row-1,
+                            col : snake.head.value.col,
+                        }
+                    } if (direction === Direction.RIGHT) {
+                        return {
+                            row : snake.head.value.row+1,
+                            col : snake.head.value.col,
+                        }
+                    } 
 
 
-            // console.log("asdasdsd")
+                }
+
+
+
+            }
+
+
 
         }, 1000);
 
