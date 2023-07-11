@@ -5,23 +5,14 @@
     height: 100%;;
 } */
 
-.container{
-    outline: 2px solid rgb(134, 154, 189); 
-    display: grid;
+.container {
 
 }
 
 .row{
-    /* height: 20px;
-    width: 100px; */
+    height: 30px;
 }
 
 .cell{
-    width: 5px;
-    height: 5px;
-    outline: 1px solid rgb(146, 8, 66);
-    grid-template-columns : (4, 1fr);
-    /* display: grid;
-    background-color: #cf1111;
-    border-radius: 50%; */
+
 }

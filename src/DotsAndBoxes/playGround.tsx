@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import './playGround.css';
+import CircleIcon from '@mui/icons-material/Circle';
+
+import MediationIcon from '@mui/icons-material/Mediation';
 
 function PlayGroundDAB () {
 
@@ -19,7 +22,19 @@ function PlayGroundDAB () {
 
     }
 
-    const [board, setBoard] = useState(createBoard(4, 4));
+    const [board, setBoard] = useState(createBoard(14, 14));
+
+    function displayLines (width : number, height : number) {
+        for(let i = 0; i < width-1; i++) {
+            //draw line to the right 
+
+            for(let j = 0; j < height-1; j++) {
+                //draw line to the bottom
+
+
+            }
+        }
+    }
 
 
     return (
@@ -28,8 +43,8 @@ function PlayGroundDAB () {
                 {board.map((row, rowIDx) => (
                 <div key={rowIDx} className={`row`}> {
                     row.map((cell, cellIDx) =>  (
-                        <div key={cellIDx} 
-                        className={`cell`}></div>
+                        <CircleIcon key={cellIDx} 
+                        className={`cell`} sx={{ fontSize: 30 }}></CircleIcon>
                     ))
                 }</div>
             ))}
