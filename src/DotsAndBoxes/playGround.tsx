@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './playGround.css';
 import CircleIcon from '@mui/icons-material/Circle';
 
-import MediationIcon from '@mui/icons-material/Mediation';
+import Box from '@mui/material/Box';
 
 function PlayGroundDAB () {
 
@@ -10,9 +10,9 @@ function PlayGroundDAB () {
 
         let counter = 1;
         const board = [];
-        for (let row = 0; row < height; row++) {
+        for (let row = 0; row < height * 2 + 1; row++) {
             const currentRow = [];
-            for (let col = 0; col < width; col++) {
+            for (let col = 0; col < width * 2 + 1; col++) {
             currentRow.push(counter++);
             }
             board.push(currentRow);
@@ -22,7 +22,8 @@ function PlayGroundDAB () {
 
     }
 
-    const [board, setBoard] = useState(createBoard(14, 14));
+    const [board, setBoard] = useState(createBoard(7, 7));
+    const [show, setShow] = useState(false);
 
     function displayLines (width : number, height : number) {
         for(let i = 0; i < width-1; i++) {
@@ -36,15 +37,49 @@ function PlayGroundDAB () {
         }
     }
 
+    function marked (position: number) { 
+        console.log(position)
+    }
+
 
     return (
         <div className='container'>
 
                 {board.map((row, rowIDx) => (
                 <div key={rowIDx} className={`row`}> {
+
+                
+
                     row.map((cell, cellIDx) =>  (
+
+                    rowIDx % 2 == 0? 
+
+                        (cellIDx % 2 != 0) ? 
+                        
+                        <div className='horizontal cell'></div> :
+                        
                         <CircleIcon key={cellIDx} 
-                        className={`cell`} sx={{ fontSize: 30 }}></CircleIcon>
+                        className={`cell`} sx={{ fontSize: 1, border: 2}}></CircleIcon>
+
+                         : 
+                    (cellIDx % 2 != 0) ? 
+
+                    <Box className='asdf cell' component="span" sx={{  width: 70, height: 70, p: 2, border: '1px none grey' }}>
+                    </Box>
+                        :
+                    <div className='vertical cell ' onClick={()=> marked(board[cellIDx][rowIDx])} ></div>
+                        
+                        
+                        
+
+                        
+
+                    
+                      
+
+                       
+                      
+
                     ))
                 }</div>
             ))}
