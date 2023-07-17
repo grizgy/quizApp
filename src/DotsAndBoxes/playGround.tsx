@@ -22,23 +22,52 @@ function PlayGroundDAB () {
 
     }
 
-    const [board, setBoard] = useState(createBoard(7, 7));
-    const [show, setShow] = useState(false);
-
-    function displayLines (width : number, height : number) {
-        for(let i = 0; i < width-1; i++) {
-            //draw line to the right 
-
-            for(let j = 0; j < height-1; j++) {
-                //draw line to the bottom
-
-
-            }
-        }
-    }
+    const [board, setBoard] = useState(createBoard(6, 6));
+    const [show, setShow] = useState(true);
 
     function marked (position: number) { 
-        console.log(position)
+            console.log(position)
+            console.log(show)
+            setShow(!show)
+    }
+
+    const [lines, setLines] = useState(new Set())
+    const [red, setRed] = useState(new Set())
+    const [blue, setBlue] = useState(new Set())
+
+
+    function addLine (input : number) {
+        lines.add(input)
+        console.log(input)
+
+        // for (let i = 0; i < lines.size; i++) {
+        //     console.log(i)
+        // }
+
+    }
+    
+
+    function addRed (input : number) {
+        red.add(input);
+    }
+
+    function addBlue (input : number) {
+        blue.add(input);
+    }
+
+    function determineColor (cell : number) {
+
+        
+
+        if(lines.has(cell+1) && lines.has(cell-1)){
+            blue.add(cell);
+
+        console.log(cell)
+        console.log(cell + 1)
+        console.log(cell - 1)
+
+        }
+
     }
 
 
@@ -54,31 +83,20 @@ function PlayGroundDAB () {
 
                     rowIDx % 2 == 0? 
 
-                        (cellIDx % 2 != 0) ? 
-                        
-                        <div className='horizontal cell'></div> :
-                        
-                        <CircleIcon key={cellIDx} 
-                        className={`cell`} sx={{ fontSize: 1, border: 2}}></CircleIcon>
+                    (cellIDx % 2 != 0) ? 
+                    
+                    <div key={cellIDx} className='horizontal cell' onClick={()=> addLine(board[rowIDx][cellIDx])}>{}</div> :
+                    
+                    <CircleIcon key={cellIDx} 
+                    className={`cell`} sx={{ fontSize: 1, border: 2}} onClick={()=> marked(board[rowIDx][cellIDx])}>{}</CircleIcon>
 
                          : 
                     (cellIDx % 2 != 0) ? 
 
-                    <Box className='asdf cell' component="span" sx={{  width: 70, height: 70, p: 2, border: '1px none grey' }}>
-                    </Box>
-                        :
-                    <div className='vertical cell ' onClick={()=> marked(board[cellIDx][rowIDx])} ></div>
-                        
-                        
-                        
-
-                        
-
-                    
-                      
-
-                       
-                      
+                    <Box key={cellIDx} className={`cell ${red.has(cell) ? 'red' : ''} ${blue.has(cell) ? 'blue' : ''} `} 
+                    component="span" sx={{width: 70, height: 70, p: 2, border: '1px none grey' }} onClick={() => determineColor(cell)}
+                    >{cell}</Box> :
+                    <div key={cellIDx} className='vertical cell ' onClick={()=> addLine(board[rowIDx][cellIDx])} >{}</div>
 
                     ))
                 }</div>

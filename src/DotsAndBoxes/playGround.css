@@ -6,7 +6,8 @@
 } */
 
 .container {
-
+    padding: 30px;
+    border: 1px solid rgb(10, 9, 9);
 }
 
 .row{
@@ -38,4 +39,12 @@
     height: 69px;
     /* outline: 1px dashed rgb(206, 19, 19); */
     padding: 0;
+}
+
+.red{
+     background-color: rgb(182, 17, 17); 
+}
+
+.blue{
+    background-color: rgb(70, 14, 224); 
 }
