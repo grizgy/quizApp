@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './playGround.css';
 import CircleIcon from '@mui/icons-material/Circle';
 
@@ -23,13 +23,7 @@ function PlayGroundDAB () {
     }
 
     const [board, setBoard] = useState(createBoard(6, 6));
-    const [show, setShow] = useState(true);
 
-    function marked (position: number) { 
-            console.log(position)
-            console.log(show)
-            setShow(!show)
-    }
 
     const [lines, setLines] = useState(new Set())
     const [red, setRed] = useState(new Set())
@@ -37,13 +31,10 @@ function PlayGroundDAB () {
 
 
     function addLine (input : number) {
+        setClicked(input);
         lines.add(input)
         console.log(input)
-
-        // for (let i = 0; i < lines.size; i++) {
-        //     console.log(i)
-        // }
-
+       
     }
     
 
@@ -57,19 +48,37 @@ function PlayGroundDAB () {
 
     function determineColor (cell : number) {
 
-        
+        if(lines.has(cell+2)){
+            console.log("Cell " + ( cell + 1 ) + " is blue")
+            blue.add(cell+ 1 );
 
-        if(lines.has(cell+1) && lines.has(cell-1)){
-            blue.add(cell);
-
-        console.log(cell)
-        console.log(cell + 1)
-        console.log(cell - 1)
-
+        // console.log(cell)
+        // console.log(cell + 1)
+        // console.log(cell - 1)
         }
+
+   
+        if(lines.has(cell-2)){
+            console.log("Cell " + ( cell - 1 ) + " is blue")
+            blue.add(cell - 1 );
+
+        // console.log(cell)
+        // console.log(cell - 1)
+        // console.log(cell + 1)
+        }
+
+
+
 
     }
 
+
+      const [clicked, setClicked] = useState(-1);
+
+    useEffect( () => {
+        determineColor(clicked)
+    }, [clicked])
+  
 
     return (
         <div className='container'>
@@ -85,18 +94,18 @@ function PlayGroundDAB () {
 
                     (cellIDx % 2 != 0) ? 
                     
-                    <div key={cellIDx} className='horizontal cell' onClick={()=> addLine(board[rowIDx][cellIDx])}>{}</div> :
+                    <div key={cellIDx} className='horizontal cell' onClick={()=> addLine(cell)}>{}</div> :
                     
                     <CircleIcon key={cellIDx} 
-                    className={`cell`} sx={{ fontSize: 1, border: 2}} onClick={()=> marked(board[rowIDx][cellIDx])}>{}</CircleIcon>
+                    className={`cell`} sx={{ fontSize: 1, border: 2}}>{}</CircleIcon>
 
                          : 
                     (cellIDx % 2 != 0) ? 
 
                     <Box key={cellIDx} className={`cell ${red.has(cell) ? 'red' : ''} ${blue.has(cell) ? 'blue' : ''} `} 
-                    component="span" sx={{width: 70, height: 70, p: 2, border: '1px none grey' }} onClick={() => determineColor(cell)}
+                    component="span" sx={{width: 70, height: 70, p: 2, border: '1px none grey' }}
                     >{cell}</Box> :
-                    <div key={cellIDx} className='vertical cell ' onClick={()=> addLine(board[rowIDx][cellIDx])} >{}</div>
+                    <div key={cellIDx} className='vertical cell ' onClick={()=> addLine(cell)} >{}</div>
 
                     ))
                 }</div>
