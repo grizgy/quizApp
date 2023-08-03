@@ -6,9 +6,9 @@ import PlayGround from './Tic Tac Toe/Components/playGround';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-import PlayGroundDAB from './DotsAndBoxes/playGround';
+import PlayGroundDAB from './dotsAndBoxes/playGround';
 
-import PlayGroundS from './snake/components/playGround';
+import PlayGroundS from './Snake/components/playGround';
 
 
 function App() {

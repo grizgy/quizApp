@@ -24,21 +24,21 @@
 }
 
 .horizontal {
-    width: 69px;
-    height: 3px;
-    /* outline: 1px dashed rgb(10, 9, 9); */
+    width: 70px;
+    height: 4px;
     padding: 0;
-}
-
-.horizontal:hover, .vertical:hover{
-    border: 1px dashed rgb(10, 9, 9);
+    background-color: rgb(10, 9, 9);
 }
 
 .vertical {
-    width: 3px;
-    height: 69px;
-    /* outline: 1px dashed rgb(206, 19, 19); */
+    width: 4px;
+    height: 70px;
     padding: 0;
+    background-color: rgb(10, 9, 9);
+}
+
+.horizontal:hover, .vertical:hover{
+   background-color: rgb(245, 4, 36);
 }
 
 .red{
@@ -46,5 +46,5 @@
 }
 
 .blue{
-    background-color: rgb(70, 14, 224); 
+    background-color: rgb(4, 27, 233); 
 }
