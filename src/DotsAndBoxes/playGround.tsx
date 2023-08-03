@@ -55,6 +55,9 @@ function PlayGroundDAB () {
                     red.add(cell+1)
                 }
 
+        // console.log(cell)
+        // console.log(cell + 1)
+        // console.log(cell - 1)
         }
 
         // //right vertical lines caltulation
@@ -96,6 +99,13 @@ function PlayGroundDAB () {
     }
 
 
+      const [clicked, setClicked] = useState(-1);
+
+    useEffect( () => {
+        determineColor(clicked)
+    }, [clicked])
+  
+
     return (
         <div className='container'>
 
@@ -110,7 +120,7 @@ function PlayGroundDAB () {
 
                     (cellIDx % 2 != 0) ? 
                     
-                    <div key={cellIDx} className='horizontal cell' onClick={()=> addLine(board[rowIDx][cellIDx])}>{}</div> :
+                    <div key={cellIDx} className='horizontal cell' onClick={()=> addLine(cell)}>{}</div> :
                     
                     <CircleIcon key={cellIDx}  onClick={()=> console.log(cell)}
                     className={`cell`} sx={{ fontSize: 1, border: 2}}>{}</CircleIcon>
@@ -121,7 +131,7 @@ function PlayGroundDAB () {
                     <Box key={cellIDx} className={`cell ${red.has(cell) ? 'red' : ''} ${blue.has(cell) ? 'blue' : ''} `} 
                     component="span" sx={{width: 70, height: 70, p: 2, border: '1px none grey' }} onClick={()=> console.log(cell)}
                     >{cell}</Box> :
-                    <div key={cellIDx} className='vertical cell ' onClick={()=> addLine(board[rowIDx][cellIDx])} >{}</div>
+                    <div key={cellIDx} className='vertical cell ' onClick={()=> addLine(cell)} >{}</div>
 
                     ))
                 }</div>
