@@ -57,6 +57,7 @@ header div {
 .showWinner button{
    background-color: rgb(202, 207, 204);
    border-radius: 20px;
+   margin: 5px;
 }
 
 .status{
@@ -72,8 +73,4 @@ div{
    display: grid;
    grid-template-columns: 1fr 1fr;
    font-size: 2rem;
-}
-
-.showWinner button{
-   margin: 5px;
 }
